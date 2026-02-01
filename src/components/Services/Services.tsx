@@ -1,126 +1,186 @@
+import { FaTicketAlt, FaUsers, FaBookOpen, FaLock, FaChartLine, FaSyncAlt, FaHeadset, FaCogs, FaMobileAlt, FaLightbulb, FaRocket, FaCheckCircle, FaSmile } from "react-icons/fa";
+import { motion } from "framer-motion";
+
 export default function Services() {
+  const services = [
+    {
+      icon: <FaTicketAlt className="text-white text-5xl" />,
+      title: "Ticket Management",
+      description: "Create, assign, track, and manage customer tickets effortlessly with our intuitive dashboard.",
+      badge: "Advanced"
+    },
+    {
+      icon: <FaBookOpen className="text-white text-5xl" />,
+      title: "Knowledge Base",
+      description: "Reduce repeated questions with a well-structured library of FAQs, guides, and troubleshooting documentation.",
+    },
+    {
+      icon: <FaLock className="text-white text-5xl" />,
+      title: "User Authentication",
+      description: "Secure access with modern login & registration, keeping user data safe and protected at all times.",
+      badge: "Secure"
+    },
+    {
+      icon: <FaChartLine className="text-white text-5xl" />,
+      title: "Admin Dashboard",
+      description: "Gain insights with interactive dashboards showing ticket stats, team performance, and productivity metrics.",
+    },
+    {
+      icon: <FaSyncAlt className="text-white text-5xl" />,
+      title: "Real-Time Updates",
+      description: "Instant updates, notifications, and ticket status changes without refreshing your page.",
+    },
+    {
+      icon: <FaHeadset className="text-white text-5xl" />,
+      title: "24/7 Support",
+      description: "Our system ensures customers always have a place to submit concerns, even outside business hours.",
+      badge: "Popular"
+    },
+    {
+      icon: <FaUsers className="text-white text-5xl" />,
+      title: "Team Collaboration",
+      description: "Assign tickets, leave comments, and work together efficiently as a team in real-time.",
+    },
+    {
+      icon: <FaCogs className="text-white text-5xl" />,
+      title: "Custom Workflows",
+      description: "Adapt ticket flows to your business needs, automating repetitive tasks and approvals.",
+    },
+    {
+      icon: <FaBookOpen className="text-white text-5xl" />,
+      title: "Reporting & Analytics",
+      description: "Generate detailed reports on tickets, performance metrics, and customer satisfaction.",
+      badge: "Insights"
+    },
+    {
+      icon: <FaMobileAlt className="text-white text-5xl" />,
+      title: "Mobile Access",
+      description: "Manage tickets and monitor team performance from anywhere with our fully responsive mobile interface.",
+    },
+    {
+      icon: <FaLightbulb className="text-white text-5xl" />,
+      title: "Smart Automation",
+      description: "Automate repetitive tasks, ticket assignments, and notifications to save time and increase efficiency.",
+      badge: "AI-Powered"
+    },
+    {
+      icon: <FaRocket className="text-white text-5xl" />,
+      title: "Performance Boost",
+      description: "Optimized for speed and reliability to handle high ticket volumes without delays.",
+    },
+  ];
+
+  const stats = [
+    { label: "Tickets Resolved", value: 1200, icon: <FaCheckCircle className="text-yellow-400 text-5xl mb-4 mx-auto" /> },
+    { label: "Happy Customers", value: 850, icon: <FaSmile className="text-pink-500 text-5xl mb-4 mx-auto" /> },
+    { label: "Support Agents", value: 25, icon: <FaUsers className="text-indigo-500 text-5xl mb-4 mx-auto" /> },
+  ];
+
   return (
-    <div className="p-10 bg-linear-to-br from-white to-blue-50 min-h-screen">
+    <div className="p-10 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
 
-      
-      <h1 className="text-4xl font-extrabold text-center text-indigo-700 mb-6 animate-fade-in-up">
+      {/* Header */}
+      <motion.h1
+        className="text-5xl md:text-6xl font-extrabold text-center text-indigo-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-500 drop-shadow-lg"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         Our Services
-      </h1>
+      </motion.h1>
 
-      <p className="text-gray-700 text-lg max-w-3xl mx-auto text-center mb-12 animate-fade-in-up animation-delay-200">
-        We offer a complete suite of tools designed to streamline customer support,
-        improve response time, and enhance collaboration across your team.
-      </p>
+      <motion.p
+        className="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        We provide innovative tools and solutions designed to elevate customer support, enhance team productivity,
+        and deliver an exceptional customer experience.
+      </motion.p>
 
-  
+      {/* Stats Section */}
+      <motion.div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        {stats.map((stat) => (
+          <div key={stat.label} className="bg-white p-8 rounded-2xl shadow-lg text-gray-800 hover:scale-105 transition-transform flex flex-col items-center">
+            {stat.icon}
+            <h3 className="text-3xl font-bold">{stat.value}+</h3>
+            <p className="mt-2">{stat.label}</p>
+          </div>
+        ))}
+      </motion.div>
+
+      {/* Services Grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        {services.map((service, index) => (
+          <motion.div
+            key={service.title}
+            className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-8 flex flex-col items-center text-center shadow-2xl hover:shadow-3xl transform hover:-translate-y-3 transition-all duration-300 overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.1 }}
+          >
+            {/* Badge */}
+            {service.badge && (
+              <span className="absolute top-4 right-4 bg-yellow-400 text-indigo-900 font-bold px-3 py-1 rounded-full text-sm shadow-lg">
+                {service.badge}
+              </span>
+            )}
 
-        
-        <div className="bg-white shadow-xl rounded-2xl p-6 hover:-translate-y-2 transition transform duration-300 animate-fade-in-up">
-          <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2"
-              viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M3 7l9-4 9 4-9 4-9-4z" />
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M3 7v6l9 4 9-4V7" />
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M3 13l9 4 9-4" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-indigo-700">Ticket Management</h2>
-          <p className="text-gray-600 mt-2">
-            Create, assign, track, and manage customer tickets effortlessly with our
-            easy-to-use ticketing dashboard.
-          </p>
-        </div>
+            <motion.div 
+              className="w-20 h-20 flex items-center justify-center mb-4 rounded-full bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 shadow-lg"
+              whileHover={{ scale: 1.1 }}
+            >
+              {service.icon}
+            </motion.div>
 
-    
-        <div className="bg-white shadow-xl rounded-2xl p-6 hover:-translate-y-2 transition duration-300 animate-fade-in-up animation-delay-200">
-          <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2"
-              viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h6l6 6v10a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-indigo-700">Knowledge Base</h2>
-          <p className="text-gray-600 mt-2">
-            Reduce repeated questions with a well-structured library of FAQs, guides,
-            and troubleshooting documentation.
-          </p>
-        </div>
+            <h2 className="text-2xl font-bold text-white mb-2">{service.title}</h2>
+            <p className="text-white">{service.description}</p>
 
-      
-        <div className="bg-white shadow-xl rounded-2xl p-6 hover:-translate-y-2 transition duration-300 animate-fade-in-up animation-delay-300">
-          <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2"
-              viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M12 8c-1.657 0-3 1.343-3 3v4h6v-4c0-1.657-1.343-3-3-3z" />
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M5 20h14" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-indigo-700">User Authentication</h2>
-          <p className="text-gray-600 mt-2">
-            Secure access with modern login & registration — keeping user data safe and
-            protected at all times.
-          </p>
-        </div>
-
-        
-        <div className="bg-white shadow-xl rounded-2xl p-6 hover:-translate-y-2 transition duration-300 animate-fade-in-up animation-delay-400">
-          <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2"
-              viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M3 5h18M9 3v2m6-2v2M4 7h16v13H4z" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-indigo-700">Admin Dashboard</h2>
-          <p className="text-gray-600 mt-2">
-            Gain insights with an interactive dashboard showing ticket stats, performance,
-            and productivity metrics.
-          </p>
-        </div>
-
-      
-        <div className="bg-white shadow-xl rounded-2xl p-6 hover:-translate-y-2 transition duration-300 animate-fade-in-up animation-delay-500">
-          <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2"
-              viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8 16l4-4-4-4m8 8l-4-4 4-4"
-              />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-indigo-700">Real-Time Updates</h2>
-          <p className="text-gray-600 mt-2">
-            Stay informed with instant updates, notifications, and ticket status changes
-            without refreshing your page.
-          </p>
-        </div>
-
-      
-        <div className="bg-white shadow-xl rounded-2xl p-6 hover:-translate-y-2 transition duration-300 animate-fade-in-up animation-delay-600">
-          <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2"
-              viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M12 8v4l2 2m-2-6a9 9 0 11-9 9 9 9 0 019-9z" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-indigo-700">24/7 Support</h2>
-          <p className="text-gray-600 mt-2">
-            Our system ensures customers always have a place to submit concerns, even
-            outside business hours.
-          </p>
-        </div>
-
+            {/* Decorative floating shapes */}
+            <div className="absolute -top-6 -left-6 w-16 h-16 bg-white opacity-10 rounded-full animate-pulse-slow"></div>
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white opacity-10 rounded-full animate-pulse-slow"></div>
+          </motion.div>
+        ))}
       </div>
+
+      {/* Highlight + Book Event CTA */}
+      <motion.div className="mt-16 max-w-6xl mx-auto bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-500 text-white rounded-3xl p-12 shadow-2xl text-center relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Why Choose Our Customer Support System?</h2>
+        <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-6">
+          Fast ticket resolution, seamless team collaboration, and advanced analytics help your business
+          deliver exceptional service that delights your customers every time.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-6 mt-6">
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0px 0px 25px rgba(0,0,0,0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-indigo-800 font-bold px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all text-lg"
+          >
+            Try it Now
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0px 0px 25px rgba(0,0,0,0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-yellow-400 text-indigo-800 font-bold px-10 py-4 rounded-2xl shadow-xl hover:bg-yellow-500 transition-all text-lg"
+          >
+            Book Your Event
+          </motion.button>
+        </div>
+
+        {/* Subtle background shapes */}
+        <div className="absolute top-0 left-0 w-40 h-40 bg-white opacity-5 rounded-full animate-pulse-slow"></div>
+        <div className="absolute bottom-0 right-0 w-60 h-60 bg-white opacity-5 rounded-full animate-pulse-slow"></div>
+      </motion.div>
+
     </div>
   );
 }
